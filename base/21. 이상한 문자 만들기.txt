@@ -1,0 +1,18 @@
+function solution(s) {
+    var answer = '';
+    var a = []
+    var count=0;
+    for(let i=0; i<s.length; i++){
+        if(s[i] == " ")
+            count = 1;
+        if(count%2==0){
+            a.push(s.charAt(i).toUpperCase());
+        }
+        else{
+           a.push(s.charAt(i).toLowerCase());
+        }
+        count++;
+    }
+    answer=a.join("");
+    return answer;
+}

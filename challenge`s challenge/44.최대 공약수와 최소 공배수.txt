@@ -1,0 +1,60 @@
+function solution(n, m) {
+    var answer = [];
+    var sosu = [];
+    var big = n;
+    var index = 0;
+    if(n<m) big = m;
+    var bae = 1, yak = 1;
+    
+    var nbun = [1], mbun = [1];
+    
+    for(let i =1; i<=big; i++){
+        for(let j=2; j<=i; j++){
+            if(i%j==0){
+                if(i==j){
+                    sosu.push(j);
+                }
+                else{break;}
+            }
+        }
+    }
+    while(n!=1){
+        if(n%sosu[index] == 0){
+            nbun.push((sosu[index]));
+            n/=sosu[index];
+            index = 0;
+        }else{
+            index++;
+        }
+    }
+    while(m!=1){
+        if(m%sosu[index] == 0){
+            mbun.push((sosu[index]));
+            m/=sosu[index];
+            index=0;
+        }
+        else{
+            index++;
+        }
+    }
+    for(var a = 0; a<nbun.length; a++){
+        for(var b= index; b<mbun.length; b++){
+            if(nbun[a]==mbun[b]){
+                yak *= nbun[a];
+                index=b+1;
+                break;
+            }
+        }
+    }
+    for(var c =0; c<nbun.length; c++){
+        bae*=nbun[c];
+    }
+     for(var d =0; d<mbun.length; d++){
+        bae*=mbun[d];
+        console.log(bae);
+    }
+    bae /=yak;
+    answer.push(yak);
+    answer.push(bae);
+    return answer;
+}

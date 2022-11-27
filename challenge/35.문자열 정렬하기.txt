@@ -1,0 +1,14 @@
+function solution(strings, n) {
+    var answer = [];
+    strings.sort((a, b)=>{
+        if(a[n]> b[n]) return 1;
+        if(b[n] > a[n]) return -1;
+        if(a[n] == b[n]){
+            var num = 0;
+            if(a < b) num = -1
+            return num;
+        }
+        return 0;
+    });
+    return strings;
+}

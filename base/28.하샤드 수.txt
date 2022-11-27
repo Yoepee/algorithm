@@ -1,0 +1,17 @@
+function solution(x) {
+     var answer = false;
+    var sum=0;
+    var y=x;
+    while (!x%10==0 & !x/10 == 0){ 
+        sum += Math.trunc(x%10);
+        x= x/10;
+
+	 if(x<1){
+            break;
+        }
+    }
+    if(y%sum==0){
+        answer = true;
+    }
+    return answer;
+}

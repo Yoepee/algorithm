@@ -1,0 +1,33 @@
+1번해답 - 실패
+function solution(arr)
+{
+    var answer = [];
+    var count = [];
+    var num;
+    for(let i=0; i<arr.length; i++){
+        if(arr[i]==arr[i+1])
+            count.push(1);
+        else
+            count.push(0);
+    }
+    for(let j = 0; j<count.length; j++){
+        if(count[j]==1)
+            arr.splice(j,1)
+    }
+    answer = arr;
+    return answer;
+}
+2번해답 -성공
+function solution(arr)
+{
+    var answer = [];
+    var copy = [...new Set(arr)];
+    var array = [];
+    for(let i = 0; i<arr.length; i++){
+        if(arr[i]!=arr[i+1]){
+            array.push(arr[i]);
+        }
+    }
+    
+    return array;
+}

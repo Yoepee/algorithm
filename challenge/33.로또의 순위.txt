@@ -1,0 +1,17 @@
+function solution(lottos, win_nums) {
+    var answer = [];
+    var rank = [6, 6, 5, 4, 3, 2, 1];
+    var cnt1 = 0, cnt2 = 0;
+    for(let i=0; i<6; i++){
+        if(win_nums.includes(lottos[i])){
+            cnt1++;
+            cnt2++;
+        }
+        else if(lottos[i]==0){
+            cnt1++;
+        }
+    }
+    answer.push((rank[cnt1]));
+    answer.push((rank[cnt2]));
+    return answer;
+}

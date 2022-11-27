@@ -1,0 +1,18 @@
+function solution(n) {
+    var answer = -1;
+    for(let i =1; i<=n; i++){
+        for(let j=2; j<=i; j++){
+            if(i%j==0){
+                if(i==j){
+                    answer++;
+                }
+                else{break;}
+            }
+            if(j*j>i){
+                answer++;
+                break;
+            }
+        }
+    }
+    return answer;
+}

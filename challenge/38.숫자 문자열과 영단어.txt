@@ -1,0 +1,23 @@
+function solution(s) {
+    var answer = 0;
+    var num = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+    var reg = /^[0-9]+$/;
+    var input = '', alpha = '';
+    var test = '';
+    for(var i=0; i<s.length; i++){
+        if(reg.test(s[i])){
+            input+=s[i];
+        }
+        else{ 
+            alpha+=s[i];
+            for(let j =0; j<10; j++){
+                if(alpha == num[j]){
+                    alpha='';
+                    input+=j;
+                }
+            }
+        }
+    }
+    input = Number(input);
+    return input;
+}

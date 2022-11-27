@@ -1,0 +1,18 @@
+function solution(nums) {
+    var answer = 0;
+    var n = nums.length/2;
+    var arr = [];
+    
+    for(let i=0;i<nums.length;i++){
+        if(arr.includes(nums[i])){
+        }else{
+            arr.push(nums[i]);
+        }
+    }
+    if(arr.length>n){
+        answer = n;
+    }else{
+        answer = arr.length;
+    }
+    return answer;
+}

@@ -1,0 +1,23 @@
+function solution(s, n) {
+    var answer = '';
+    var upper = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    var lower = ['a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r','s','t', 'u', 'v','w', 'x', 'y', 'z'];
+    var arr = [];
+    for (let a = 0; a<s.length; a++){
+        arr.push(s[a]);
+    }
+    for( let i=0; i<s.length;i++){
+        for(let j=0; j<26; j++){
+            if(arr[i] == upper[j]){
+                arr[i] = upper[(j+n)%26];
+                break;
+            }
+            else if(arr[i] == lower[j]){
+                arr[i] = lower[(j+n)%26];
+                break;
+            }
+        }
+        answer+= arr[i];
+    }
+    return answer;
+}

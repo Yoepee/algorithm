@@ -1,0 +1,30 @@
+1번 해답
+function solution(n)
+{
+    var answer = 0;
+    var s=n.toString();
+    var count=0;
+    for(let i =0; i<s.length; i++){
+        count+=Number(s[i]);
+    }
+
+    answer = Number(count);
+    return answer;
+}
+2번 해답
+function solution(n)
+{
+    var answer = 0;
+    var sum=0;
+    
+    while (!n%10==0 & !n/10 == 0){ //몫과 나머지를 확인하여 계산
+        sum += Math.trunc(n%10);  //소수점 아래 날리는 함수
+        n= n/10;
+
+	 if(n<1){
+            break;
+        }
+    }
+    answer = sum;
+    return answer;
+}

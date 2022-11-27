@@ -1,0 +1,52 @@
+1번해답(정확성 o, 효율성 x)
+function solution(participant, completion) {
+    var answer = '';
+    var index = -1;
+    var a= participant.length;
+    for(let i =0; i<a;i++){
+       index = completion.indexOf(participant[i]);
+       if(index == -1){
+           return answer=participant[i];
+       }
+        completion.splice(index,1);
+        index = completion.indexOf(participant[a-i-1]);
+       if(index == -1){
+           return answer=participant[a-i-1];
+       }
+        completion.splice(index,1);
+    }
+    return answer = participant;
+}
+2번해답(정확성 o, 효율성 x)
+function solution(participant, completion) {
+    var answer = '';
+    
+    for(let i =0; i<completion.length;){
+        for(let j=0; j<participant.length;j++ ){
+            if(participant[j] == completion[i]){
+                participant.splice(j,1)
+                completion.splice(i,1);
+                break;
+            }
+        }
+    }
+    answer = participant[0];
+    return answer;
+}
+3번해답(성공)
+function solution(participant, completion) {
+    var answer = '';
+    participant.sort();
+    completion.sort();
+    for(let i=0; i<completion.length; i ++){
+        if(completion[i]!=participant[i]){
+            return participant[i];
+            break;
+        }
+    }
+    if(answer == ''){
+        return participant[completion.length];
+    }
+    
+    return answer;
+}

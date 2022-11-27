@@ -1,0 +1,51 @@
+function solution(dartResult) {
+    var answer = 0;
+    var reg = /^[0-9]+$/;
+    var reg2 = /^[A-Z]+$/;
+    var num = '';
+    var score = 0;
+    var prev = 0;
+    var count = 0;
+    for(let i=0; i<dartResult.length; i++){
+        if(reg.test(dartResult[i])){
+            num+=dartResult[i];
+        }else if(reg2.test(dartResult[i])){
+            if(dartResult[i] == 'S'){
+                score = Number(num);
+                answer += score;
+            }else if(dartResult[i] == 'D'){
+                score = Number(num) ** 2;
+                answer += score;
+            }else if(dartResult[i] == 'T'){
+                score = Number(num) ** 3;
+                answer += score;
+            }
+            if(prev <0){
+                if(count == 0){
+                    prev = prev;
+                    count ++;
+                }
+                else{
+                    prev = answer - score -(prev);   
+                }          
+            }else{
+                prev = answer - score -(prev);   
+            }
+            console.log(prev);
+            var num = '';
+        }
+        else{
+            if(dartResult[i] == '*'){
+                answer += score;
+                answer += prev;
+                prev*=2;
+            }else if(dartResult[i] == '#'){
+                answer -= 2*score;
+                prev = -score;
+                console.log(prev);
+            }
+        }
+        
+    }
+    return answer;
+}

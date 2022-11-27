@@ -1,0 +1,11 @@
+function solution(s) {
+    var answer = false;
+    var reg = /^[0-9]+$/;
+    if(s.length == 4 | s.length == 6){
+        answer = reg.test(s);
+        return answer;
+    }
+    else{
+        return false;
+    }
+}

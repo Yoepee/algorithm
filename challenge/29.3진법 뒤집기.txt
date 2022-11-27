@@ -1,0 +1,34 @@
+function solution(n) {
+    var answer = 0;
+    var mul=1;
+    var a = [];
+    while(n/mul >= 1){
+        mul*=3;
+    }
+    while(mul > 0.4){
+        mul/=3;
+        if(n>=mul*2){
+            a.push(2);
+            n-=(mul*2);
+        }
+        else if(n>=mul){
+            a.push(1);
+            n-=mul;
+            
+        }
+        else{
+            a.push(0);
+            
+        }
+    }
+    mul*=3;
+    if(n<3){
+        a.push(n);
+    }
+    for(let i=0; i<a.length; i++){
+        answer += a[i]*mul;
+        mul*=3;
+    }
+    
+    return answer;
+}

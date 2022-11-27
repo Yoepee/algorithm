@@ -1,0 +1,39 @@
+function solution(N, stages) {
+    var answer = [];
+    var fail = [];
+    var sort = [];
+    var people = stages.length;
+    for(let i=0; i<N; i++){
+        var count = 0;
+        for(let j=0; j<stages.length; j++){
+             if(stages[j]==i+1){
+                 count++;
+             }
+        }
+        if(people == 0){
+            fail.push(0);
+        }
+        else{
+            fail.push(count/people);
+            people-=count;
+        }
+    }
+    for(let a= 0; a<fail.length; a++){
+        sort.push(fail[a]);
+    }
+    fail.sort((a,b)=>{return b-a;})
+    for(let j = 0; j<N; j++){
+        for(let k =0; k<N; k++){
+            if(sort[k] == fail[j]){
+                if(answer.includes(k+1)){
+                    continue;
+                }
+                else{
+                     answer.push(k+1);
+                    break;   
+                }
+            }
+        }
+    }
+    return answer;
+}

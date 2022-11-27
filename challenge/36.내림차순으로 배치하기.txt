@@ -1,0 +1,10 @@
+function solution(s) {
+    var answer = '';
+    var a = [];
+    for(let i=0; i<s.length;i++){
+        a.push(s[i]);
+    }
+    a.sort().reverse();
+    answer = a.join('');
+    return answer;
+}

@@ -1,0 +1,36 @@
+function solution(n, arr1, arr2) {
+    var answer = [];
+    var standard = 1
+    for(let a = 0; a<n-1;a++){
+        standard *=2;
+    }
+    for(let i=0; i<n; i++){
+        var line = '';
+        var s = standard;
+        for(let j =0; j<n; j++){
+            var at1 = 0;
+            var at2 = 0;
+            if(arr1[i]>=s){
+                at1 = 1;
+                arr1[i]=arr1[i]-s;
+            }else{
+                at1 = 0;
+            }
+            if(arr2[i]>=s){
+                at2 = 1;
+                arr2[i]=arr2[i]-s;
+            }else{
+                at2 = 0;
+            }
+            if(at1 == 1 | at2 == 1){
+                line+='#';
+                s/=2;
+            }else{
+                line+=' ';
+                s/=2;
+            }
+        }
+        answer.push(line);
+    }
+    return answer;
+}

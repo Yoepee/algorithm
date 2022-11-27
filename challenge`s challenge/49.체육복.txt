@@ -1,0 +1,99 @@
+function solution(n, lost, reserve) {
+    var answer = n-(lost.length);
+    var num = n-(lost.length);
+    var count = [];
+    var loco= [];
+    for(let i =0; i<lost.length; i++){
+        if(lost.length == loco.length){
+            break;
+        }
+        else{
+            if(reserve.includes(lost[i]-1)){
+                if(lost.length == loco.length){
+                    break;
+                }
+                if(count.includes(lost[i]-1)){
+                }else{
+                    num++;
+                    count.push(lost[i]-1);
+                    loco.push(lost[i]);
+                }
+            }
+            if(reserve.includes(lost[i])){
+                if(lost.length == loco.length){
+                    break;
+                }
+                if(count.includes(lost[i])){
+                }else{
+                    num++;
+                    count.push(lost[i]);
+                    loco.push(lost[i]);
+                }
+            }
+            if(reserve.includes(lost[i]+1)){
+                if(lost.length == loco.length){
+                    break;
+                }
+                if(count.includes(lost[i]+1)){
+                }else{
+                    num++;
+                    count.push(lost[i]+1);
+                    loco.push(lost[i]);
+                }
+            }
+        }
+    }
+    answer+=loco.length;
+    return num;
+}
+2번풀이 (성공)
+function solution(n, lost, reserve) {
+    var answer = n-(lost.length);
+    var count = 0;
+    var reco= [];
+    lost = lost.sort((a,b)=>{return a-b})
+    reserve = reserve.sort((a,b)=>{return a-b})
+    
+    for(let a=0; a<lost.length; a++){
+        for(let b=0; b<reserve.length; b++){
+            if(lost[a]==reserve[b]){
+                count++;
+                reco.push(lost[a]);
+                break;
+            }
+        }
+    }
+    
+    for(let i =0; i<lost.length; i++){
+        if(reco.includes(lost[i])){
+            continue;
+        }
+        if(reserve.includes(lost[i])){
+            if(!reco.includes(lost[i])){
+                count++;
+                reco.push(lost[i]);
+                continue;
+            }
+        }
+        if(reserve.includes(lost[i]-1)){
+            if(!reco.includes(lost[i]-1)){
+                count++
+                reco.push(lost[i]-1);
+                continue;
+            }else{
+                
+            }
+        }
+        if(reserve.includes(lost[i]+1)){
+            if(!reco.includes(lost[i]+1)){
+                count++
+                reco.push(lost[i]+1);
+                continue;
+            }else{
+                
+            }
+        }
+    }
+    answer += count;
+    return answer;
+}

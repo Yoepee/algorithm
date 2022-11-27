@@ -1,0 +1,11 @@
+function solution(n) {
+    var answer = [];
+     while (!n%10==0 & !n/10 == 0){ //몫과 나머지를 확인하여 계산
+        answer.push(Math.trunc(n%10));  //소수점 아래 날리는 함수
+        n= n/10;
+        if(n<1){
+            break;
+        }
+    }
+    return answer;
+}

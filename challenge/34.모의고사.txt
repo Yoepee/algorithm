@@ -1,0 +1,20 @@
+function solution(answers) {
+    var answer = [];
+    var spj1 = [1,2,3,4,5], spj2 = [2,1,2,3,2,4,2,5], spj3=[3,3,1,1,2,2,4,4,5,5];
+    var cnt= [0,0,0]
+    var num = answers.length;
+    for(let i=0; i<num; i++){
+        if(answers[i] == spj1[i%5])
+            cnt[0]++;
+        if(answers[i] == spj2[i%8])
+            cnt[1]++;
+        if(answers[i] == spj3[i%10])
+            cnt[2]++;
+    }
+    var s = Math.max(...cnt);
+    for(let j = 0; j<3; j++){
+        if(cnt[j]==s)
+            answer.push((j+1));
+    }
+    return answer;
+}
